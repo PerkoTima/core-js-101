@@ -95,8 +95,8 @@ function getFirstChar(value) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
 }
 
 /**
@@ -143,7 +143,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  str.slice(1, -1);
+  return str.slice(1, -1);
 }
 
 /**
@@ -203,8 +203,11 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const top = '┌'.concat('─'.repeat(width - 2), '┐\n');
+  const middle = '│'.concat(' '.repeat(width - 2), '│\n');
+  const bottom = '└'.concat('─'.repeat(width - 2), '┘\n');
+  return top.concat(middle.repeat(height - 2), bottom);
 }
 
 /**
@@ -241,7 +244,7 @@ function encodeToRot13(/* str */) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  return typeof value === 'string';
+  return typeof value === 'string' || value instanceof String;
 }
 
 /**
